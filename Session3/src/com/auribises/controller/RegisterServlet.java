@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -50,7 +51,21 @@ public class RegisterServlet extends HttpServlet {
 		helper.openConnection();
 		int i = helper.registerUser(user);
 		if(i>0){
+			
+			//1. Cookies
+			//Cookie c1 = new Cookie("keyName", name);
+			//Cookie c2 = new Cookie("keyEmail", email);
+			
+			//c1.setMaxAge();
+			
+			//response.addCookie(c1);
+			//response.addCookie(c2);
+			
+			//2. URL ReWriting / QueryString
+			String url = "Welcome?name="+name+"&email="+email;
+			
 			out.print("You are Registered Successfully....");
+			out.println("<a href='"+url+"'>Enter Home</a>");
 		}else{
 			out.print("You are not Registered Successfully....");
 		}

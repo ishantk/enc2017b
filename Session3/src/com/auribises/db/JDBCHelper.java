@@ -3,6 +3,7 @@ package com.auribises.db;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import com.auribises.model.User;
 
@@ -62,6 +63,26 @@ public class JDBCHelper {
 		}
 		
 		return i;
+	}
+	
+	
+	public boolean loginUser(User user){
+		boolean login = false;
+		try{
+			//3. Create SQL Statement
+			String sql = "select * from USER where email = ? and password = ?";
+			pStmt = con.prepareStatement(sql);
+			pStmt.setString(1, user.getEmail());
+			pStmt.setString(2, user.getPassword());
+			
+			ResultSet rs = pStmt.executeQuery();
+			
+			login = rs.next();
+			
+		}catch (Exception e) {
+			System.out.println("Some Exception: "+e);
+		}
+		return login;
 	}
 	
 	public void closeConnection(){
