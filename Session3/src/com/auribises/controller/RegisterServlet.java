@@ -10,6 +10,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.auribises.db.JDBCHelper;
 import com.auribises.model.User;
@@ -62,10 +63,24 @@ public class RegisterServlet extends HttpServlet {
 			//response.addCookie(c2);
 			
 			//2. URL ReWriting / QueryString
-			String url = "Welcome?name="+name+"&email="+email;
+			//String url = "Welcome?name="+name+"&email="+email;
 			
-			out.print("You are Registered Successfully....");
-			out.println("<a href='"+url+"'>Enter Home</a>");
+			//out.print("You are Registered Successfully....");
+			//out.println("<a href='"+url+"'>Enter Home</a>");
+			
+			//3. Hidden Form Field
+			/*String str = "<form action='Welcome' method='post'>"+
+			"<input type='hidden' name='txtName' value='"+name+"'><br/>"+
+			"<input type='hidden' name='txtEmail' value='"+email+"'><br/>"+
+			"<input type='submit' value='Welcome Home'>"+
+			"</form>";
+			out.print(str); // Sending Back the Response*/
+			
+			HttpSession session = request.getSession();
+			session.setAttribute("keyName", name);
+			session.setAttribute("keyEmail", email);
+			session.setAttribute("keyAge", String.valueOf(30));
+			out.println("<a href='Wow'>Enter Home</a>");
 		}else{
 			out.print("You are not Registered Successfully....");
 		}
