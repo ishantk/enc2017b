@@ -13,6 +13,8 @@
         <property name="show_sql">true</property>
         <property name="hibernate.hbm2ddl.auto">update</property>               
         <!-- <mapping resource="student.hbm.xml"/>  -->
-        <mapping class="com.auribises.Employee"/>       
+        <!-- <mapping class="com.auribises.Employee"/>   -->     
+        <!-- <mapping resource="onetoone.hbm.xml"/> -->
+        <mapping resource="onetomany.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
