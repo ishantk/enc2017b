@@ -15,7 +15,7 @@ public class Client {
 	public static void main(String[] args) {
 		
 		
-		Student s1 = new Student();
+		/*Student s1 = new Student();
 		
 		s1.setName("Harry");
 		s1.setAge(31);
@@ -27,11 +27,12 @@ public class Client {
 		s2.setName("Kim");
 		s2.setAge(29);
 		s2.setPhone("888888888");
-		s2.setAddress("Country Homes SouthEast");
+		s2.setAddress("Country Homes SouthEast");*/
 		
 		Configuration config = null;
 		SessionFactory factory = null;
 		Session session = null;
+		Session session1 = null;
 		Transaction transaction = null;
 		
 		try {
@@ -43,6 +44,7 @@ public class Client {
 			factory = config.buildSessionFactory();
 			
 			session = factory.openSession();
+			//session1 = factory.openSession();
 			
 			transaction = session.beginTransaction();
 			
@@ -78,7 +80,7 @@ public class Client {
 				System.out.println("---------------------------------------------------------------------");
 			}*/
 			
-			Criteria criteria = session.createCriteria(Student.class);
+			/*Criteria criteria = session.createCriteria(Student.class);
 			criteria.add(Restrictions.gt("age", 29));
 			
 			List<Student> list = criteria.list();
@@ -86,7 +88,15 @@ public class Client {
 			for(Student s : list){
 				System.out.println(s);
 				System.out.println("---------------------------------------------------------------------");
-			}
+			}*/
+			
+			Student s1 = (Student)session.get(Student.class, 3);
+			Student s2 = (Student)session.get(Student.class, 2);
+			Student s3 = (Student)session.get(Student.class, 3);
+			
+			System.out.println(s1);
+			System.out.println(s2);
+			System.out.println(s3);
 			
 			transaction.commit();
 			System.out.println("--Transaction Finished--");
@@ -98,6 +108,7 @@ public class Client {
 			transaction.rollback();
 		}finally {
 			session.close();
+			factory.close();
 		}
 
 	}
