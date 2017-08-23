@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+    
+   <!-- <bean id="eRef1" class="com.auribises.Employee" scope="prototype" > -->
+ <!--   <bean id="eRef1" class="com.auribises.Employee" init-method="myInit" destroy-method="myDestroy">
+       <property name="eid" value="101"/>
+       <property name="name" value="John"/>
+       <property name="salary" value="50000"/>
+       <property name="address" value="Country Homes"/>
+       <property name="email" value="john@example.com"/>
+   </bean>
+   
+   <bean class="com.auribises.PostProcessor"/> -->
+   
+    <!-- <bean id="eRef2" class="com.auribises.Employee">
+       <property name="eid" value="102"/>
+       <property name="name" value="Jennie"/>
+       <property name="salary" value="70000"/>
+       <property name="address" value="Country Homes North"/>
+       <property name="email" value="jennie@example.com"/>
+   </bean> -->
+   
+   <!-- <bean id="pRef" class="com.auribises.Parent">
+       <property name="fname" value="John"/>
+       <property name="lname" value="Watson"/>
+       <property name="money" value="70000"/>
+   </bean>
+   
+    <bean id="cRef" class="com.auribises.Child" parent="pRef">
+       <property name="fname" value="Jack"/>
+       <property name="vehicles" value="3"/>
+   </bean> -->
+   
+   <bean id="pRef" class="com.auribises.Person">
+       <property name="name" value="John"/>
+       <property name="age" value="30"/>
+       <property name="email" value="john@example.com"/>
+       <!-- <property name="adrs" ref="aRef"/> -->
+       <constructor-arg ref="aRef"/>
+   </bean>
+   
+    <bean id="aRef" class="com.auribises.Address">
+       <property name="adrsLine" value="Country Homes"/>
+       <property name="city" value="Ludhiana"/>
+       <property name="state" value="Punjab"/>
+       <property name="zipCode" value="141002"/>
+   </bean>
+
+</beans>
