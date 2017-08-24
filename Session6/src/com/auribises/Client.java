@@ -1,5 +1,7 @@
 package com.auribises;
 
+import java.util.List;
+
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
@@ -58,8 +60,20 @@ public class Client {
 		//System.out.println(c+" - "+c.getFname()+" - "+c.getLname()+" - "+c.getMoney());
 		System.out.println(c);*/
 		
-		Person p = context.getBean("pRef",Person.class);
-		System.out.println(p);
+//		Person p = context.getBean("pRef",Person.class);
+//		System.out.println(p);
+		
+//		Manager mgr = context.getBean("mRef",Manager.class);
+//		System.out.println(mgr);
+//		
+//		List<String> list = mgr.getCertificates();
+//		for(String s : list){
+//			System.out.println(s);
+//		}
+		
+		CB cRef = context.getBean("cb",CB.class);
+		
+		cRef.getCa().sayHello("john watson");
 		
 		ClassPathXmlApplicationContext cxt = (ClassPathXmlApplicationContext)context;
 		cxt.close();

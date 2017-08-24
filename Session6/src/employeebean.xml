@@ -38,11 +38,11 @@
        <property name="vehicles" value="3"/>
    </bean> -->
    
-   <bean id="pRef" class="com.auribises.Person">
+   <!-- <bean id="pRef" class="com.auribises.Person">
        <property name="name" value="John"/>
        <property name="age" value="30"/>
        <property name="email" value="john@example.com"/>
-       <!-- <property name="adrs" ref="aRef"/> -->
+       <property name="adrs" ref="aRef"/>
        <constructor-arg ref="aRef"/>
    </bean>
    
@@ -51,6 +51,29 @@
        <property name="city" value="Ludhiana"/>
        <property name="state" value="Punjab"/>
        <property name="zipCode" value="141002"/>
-   </bean>
+   </bean> -->
+   
+   <!-- <bean id="mRef" class="com.auribises.Manager">
+       <property name="mid" value="101"/>
+       <property name="email" value="john@example.com"/>
+       <property name="salary" value="50000"/>
+       <property name="certificates">
+       	<list>
+       		<value>OCJP</value>
+       		<value>OCWD</value>
+       		<value>AWS</value>
+       		<value>CCNA</value>
+       	</list>       	
+       </property>
+   </bean>  -->
+   
+   <context:annotation-config/>
+   
+   <bean id="ca" class="com.auribises.CA"/>
+   <bean id="cb" class="com.auribises.CB"/>
 
 </beans>
+
+
+
+
